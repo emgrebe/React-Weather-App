@@ -1,6 +1,7 @@
 import React from 'react'
 
 class Titles extends React.Component {
+  state 
   render() {
     return (
       <div className="Titles">
