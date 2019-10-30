@@ -6,11 +6,10 @@ import Weather from './components/Weather';
 
 class App extends React.Component {
   state = {
-    temperature: undefined,
     city: undefined,
     country: undefined,
+    temperature: undefined,
     humidity: undefined,
-    windSpeed: undefined,
     description: undefined,
     error: undefined
   }
@@ -21,13 +20,12 @@ class App extends React.Component {
     const country = e.target.elements.country.value;
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${process.env.REACT_APP_API_KEY}`);
     const response = await api_call.json();
-    console.log(response);
-    if( city && country) {
-      this.setState=({
+    if( city && country ) {
+      console.log(response);
+      this.setState({
         city: response.name,
         country: response.sys.country,
-        temperature: response.main.temp,
-        windSpeed: response.wind.speed,
+        temperature: Math.trunc((response.main.temp - 273.15)*(1.8)+32),
         humidity: response.main.humidity,
         description: response.weather[0].description,
         error: ""
@@ -50,7 +48,6 @@ class App extends React.Component {
           city={this.state.city}
           country={this.state.country}
           temperature={this.state.temperature}
-          windSpeed={this.state.windSpeed}
           humidity={this.state.humidity}
           description={this.state.description}
           error={this.state.error}
