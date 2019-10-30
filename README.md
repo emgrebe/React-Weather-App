@@ -1,3 +1,6 @@
+This is a ReactJS Weather Scanner that calls the openweatherapp API to render the weather descriptions of the cities and countries weather.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
