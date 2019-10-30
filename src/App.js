@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Titles from './components/Titles';
 import Form from './components/Form';
+import Weather from './components/Weather';
 
 class App extends React.Component {
   state = {
@@ -41,6 +42,7 @@ class App extends React.Component {
         <Form
           loadWeather={this.getWeather}
         />
+        <Weather />
       </div>
     )
   }
