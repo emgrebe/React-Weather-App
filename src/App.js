@@ -24,14 +24,10 @@ class App extends React.Component {
     console.log(response)
     if( city && country) {
       this.setState=({
-        //Math.trunc removed the decimal part of an integer
-        // temperature: Math.trunc((response.main.temp - 273.15)*(1.8)+32),
-        // tempLow: Math.trunc((response.main.temp_min - 273.15)*(1.8)+32),
-        // tempHigh: Math.trunc((response.main.temp_max - 273.15)*(1.8)+32),
-        // windSpeed: response.wind.speed,
-        temperature: response.main.temp,
         city: response.name,
         country: response.sys.country,
+        temperature: response.main.temp,
+        windSpeed: response.wind.speed,
         humidity: response.main.humidity,
         description: response.weather[0].description,
         error: ""
@@ -50,7 +46,15 @@ class App extends React.Component {
         <Form
           loadWeather={this.getWeather}
         />
-        <Weather />
+        <Weather
+          city={this.state.city}
+          country={this.state.country}
+          temperature={this.state.temperature}
+          windSpeed={this.state.windSpeed}
+          humidity={this.state.humidity}
+          description={this.state.description}
+          error={this.state.error}
+        />
       </div>
     )
   }
